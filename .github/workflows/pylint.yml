@@ -9,5 +9,3 @@ jobs:
       - name: Install pre-commit hook
         run: |
           pwd
-          pip install pre-commit
-          pre-commit install
