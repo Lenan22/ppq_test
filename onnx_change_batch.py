@@ -4,7 +4,7 @@ import numpy as np
 import onnx.helper as helper
 import pdb
 
-onnx_path = "yolov4-tiny-new.onnx"
+onnx_path = "yolov4-tiny-new.onnx"     
 
 result = "yolov4-tiny-new.onnx"
 
