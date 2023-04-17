@@ -18,7 +18,7 @@ def change_input_dim(model,):
     #     # input.type.tensor_type.shape.dim[2].dim_param = "height"
     #     # input.type.tensor_type.shape.dim[3].dim_param = "width"
 
-    inputs[0].type.tensor_type.shape.dim[0].dim_param = ""
+    inputs[0].type.tensor_type.shape.dim[0].dim_param = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
     inputs[0].type.tensor_type.shape.dim[0].dim_value = 1
     inputs[0].type.tensor_type.shape.dim[1].dim_param = ""
     inputs[0].type.tensor_type.shape.dim[1].dim_value = 3
