@@ -4,9 +4,9 @@ import numpy as np
 import onnx.helper as helper
 import pdb
 
-onnx_path = "yolov4-tiny-new.onnx"
+onnx_path = 'yolov4-tiny-new.onnx'
 
-result = "yolov4-tiny-new.onnx"
+result = 'yolov4-tiny-new.onnx'
 
 batch_size = 1
 
@@ -18,13 +18,13 @@ def change_input_dim(model,):
     #     # input.type.tensor_type.shape.dim[2].dim_param = "height"
     #     # input.type.tensor_type.shape.dim[3].dim_param = "width"
 
-    inputs[0].type.tensor_type.shape.dim[0].dim_param = ""                                                                         
+    inputs[0].type.tensor_type.shape.dim[0].dim_param = ''
     inputs[0].type.tensor_type.shape.dim[0].dim_value = 1
-    inputs[0].type.tensor_type.shape.dim[1].dim_param = ""
+    inputs[0].type.tensor_type.shape.dim[1].dim_param = ''
     inputs[0].type.tensor_type.shape.dim[1].dim_value = 3
-    inputs[0].type.tensor_type.shape.dim[2].dim_param = ""
+    inputs[0].type.tensor_type.shape.dim[2].dim_param = ''
     inputs[0].type.tensor_type.shape.dim[2].dim_value = 448
-    inputs[0].type.tensor_type.shape.dim[3].dim_param = ""
+    inputs[0].type.tensor_type.shape.dim[3].dim_param = ''
     inputs[0].type.tensor_type.shape.dim[3].dim_value = 640
 
     # import pdb
@@ -37,7 +37,7 @@ def change_input_dim(model,):
     #     dim1 = output.type.tensor_type.shape.dim[0]
     #     dim1.dim_value = int(batch_size)
 
-    print("----------")
+    print('----------')
 #        if isinstance(batch_size, str):
 #           dim1.dim_param = batch_size
 #        elif (isinstance(batch_size, str) and batch_size.isdigit()) or isinstance(batch_size, int):
@@ -46,13 +46,13 @@ def change_input_dim(model,):
 #           dim1.dim_value = 1
 
 def change_output_dim(model,):
-    
+
     # import pdb
     # pdb.set_trace()
 
     # del model.graph.output[-1]
-    
-    model.graph.output[0].name = "yolo1_out"
+
+    model.graph.output[0].name = 'yolo1_out'
     model.graph.output[0].type.tensor_type.shape.dim[0].dim_value = 1
     model.graph.output[0].type.tensor_type.shape.dim[1].dim_value = 36
     model.graph.output[0].type.tensor_type.shape.dim[2].dim_value = 19
@@ -62,20 +62,20 @@ def change_output_dim(model,):
     model.graph.output.append(model.graph.output[0])
     model.graph.output.append(model.graph.output[0])
 
-    model.graph.output[1].name = "yolo2_out"
+    model.graph.output[1].name = 'yolo2_out'
     model.graph.output[1].type.tensor_type.shape.dim[0].dim_value = 1
     model.graph.output[1].type.tensor_type.shape.dim[1].dim_value = 36
     model.graph.output[1].type.tensor_type.shape.dim[2].dim_value = 38
     model.graph.output[1].type.tensor_type.shape.dim[3].dim_value = 38
 
-    model.graph.output[2].name = "yolo3_out"
+    model.graph.output[2].name = 'yolo3_out'
     model.graph.output[2].type.tensor_type.shape.dim[0].dim_value = 1
     model.graph.output[2].type.tensor_type.shape.dim[1].dim_value = 36
     model.graph.output[2].type.tensor_type.shape.dim[2].dim_value = 76
     model.graph.output[2].type.tensor_type.shape.dim[3].dim_value = 76
 
     # outputs = model.graph.output
-    
+
     # pdb.set_trace()
     # # for output in outputs:
     # #     dim1 = output.type.tensor_type.shape.dim[0]
@@ -127,7 +127,7 @@ def change_model(model,):
             pdb.set_trace()
             print(node)
 
-    print("----------------------------")
+    print('----------------------------')
 
 
 
@@ -142,8 +142,8 @@ def apply(transform, infile, outfile):
 if __name__ == '__main__':
     # apply(change_input_dim, onnx_path, result)
     apply(change_output_dim, onnx_path, result)
-    
-    #original_model = onnx.load(onnx_path)   
+
+    #original_model = onnx.load(onnx_path)
     #nodeNameList = getNodeNameList(original_model)
 
 

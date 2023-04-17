@@ -1,6 +1,6 @@
 import onnx
 
-onnx_model = onnx.load("yolov4-tiny.onnx")
+onnx_model = onnx.load('yolov4-tiny.onnx')
 graph = onnx_model.graph
 node  = graph.node
 
@@ -13,7 +13,7 @@ pdb.set_trace()
 
 for tmp_node in nodes_need_to_del:
     # assert (len(node[i].output)==1)
-    graph.node.remove(tmp_node)  
+    graph.node.remove(tmp_node)
 
 
 onnx.save(onnx_model, 'yolov4-tiny-new.onnx')
@@ -42,8 +42,8 @@ onnx.save(onnx_model, 'yolov4-tiny-new.onnx')
 #     outputs=['449'],
 #     value=onnx.helper.make_tensor('value', onnx.TensorProto.FLOAT, [4], [1, 1, 1.81, 1.81])
 # )
-# graph.node.remove(old_scale_node)  
-# graph.node.insert(157, new_scale_node) 
+# graph.node.remove(old_scale_node)
+# graph.node.insert(157, new_scale_node)
 
 # # onnx.checker.check_model(onnx_model)
 # graph.cleanup()
