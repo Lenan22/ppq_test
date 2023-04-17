@@ -6,6 +6,6 @@ jobs:
   lint:
     runs-on: self-hosted
     steps:
-      - name: Install pre-commit hook
+      - name: pre-commit hook
         run: |
           pwd
